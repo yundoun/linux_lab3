@@ -5,18 +5,18 @@
 
 int main()
 {
-  char input[1000];
-  char sentence[1000];
-  int mistakes = 0;
-  clock_t start_time, end_time;
-  double elapsed_time, typing_speed;
+  char input[1000];                  // 사용자 입력을 저장할 배열
+  char sentence[1000];               // 비교할 정답 문장을 저장할 배열
+  int mistakes = 0;                  // 잘못 타이핑한 횟수를 저장할 변수
+  clock_t start_time, end_time;      // 시작 및 종료 시간을 측정하기 위한 변수
+  double elapsed_time, typing_speed; // 경과 시간 및 분당 타자수를 계산하기 위한 변수
 
   printf("타자 연습을 시작합니다. 아래 문장을 빠르게 타이핑해보세요.\n");
-  printf("문장: The quick brown fox jumps over the lazy dog.\n");
+  printf("문장: 컴퓨터공학과 3학년 20193066 윤도운.\n");
 
-  strcpy(sentence, "The quick brown fox jumps over the lazy dog.");
+  strcpy(sentence, "컴퓨터공학과 3학년 20193066 윤도운."); // 정답 문장 초기화
   printf("입력: ");
-  fgets(input, sizeof(input), stdin);
+  fgets(input, sizeof(input), stdin); // 사용자 입력을 받음
 
   // 개행 문자 제거
   input[strcspn(input, "\n")] = '\0';
@@ -42,7 +42,7 @@ int main()
 
   // 경과 시간 계산
   elapsed_time = (double)(end_time - start_time) / CLOCKS_PER_SEC * 100000;
-  
+
   // 분당 타자수 계산
   typing_speed = ((strlen(sentence) - mistakes) / elapsed_time) * 60;
 
